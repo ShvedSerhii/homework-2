@@ -27,13 +27,10 @@ ball.onmousedown = function(event) {
     let droppableBelow = elemBelow.closest(".droppable");
     if (currentDroppable != droppableBelow) {
       if (currentDroppable) {
-        // null when we were not over a droppable before this event
         leaveDroppable(currentDroppable);
       }
       currentDroppable = droppableBelow;
       if (currentDroppable) {
-        // null if we're not coming over a droppable now
-        // (maybe just left the droppable)
         enterDroppable(currentDroppable);
       }
     }
