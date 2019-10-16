@@ -30,4 +30,4 @@ function makeChange(price, pay) {
   }
 
   return memo[change];
-}
+} 
