@@ -1,6 +1,6 @@
 let currentDroppable = null;
 let calc = 0;
-let calcElem = document.getElementById('calc');
+let calcElem = document.getElementById("calc");
 
 ball.onmousedown = function(event) {
   let shiftX = event.clientX - ball.getBoundingClientRect().left;
