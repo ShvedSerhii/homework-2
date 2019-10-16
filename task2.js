@@ -22,4 +22,4 @@ function waterCalc(arr) {
   });
 
   return water;
-}
+} 
