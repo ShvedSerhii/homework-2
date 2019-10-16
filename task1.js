@@ -8,4 +8,4 @@ function mySumMinMaxFunction(arr) {
   result.min = arr[0];
   result.max = arr.pop();
   return result;
-}
+} 
