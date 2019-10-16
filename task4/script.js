@@ -1,4 +1,6 @@
 let currentDroppable = null;
+let calc = 0;
+let calcElem = document.getElementById('calc');
 
 ball.onmousedown = function(event) {
   let shiftX = event.clientX - ball.getBoundingClientRect().left;
@@ -46,6 +48,8 @@ ball.onmousedown = function(event) {
 
 function enterDroppable(elem) {
   elem.style.background = "pink";
+  calc++;
+  calcElem.innerHTML = calc;
 }
 
 function leaveDroppable(elem) {
