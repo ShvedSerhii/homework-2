@@ -1,33 +1,24 @@
 "use strict";
 
-const stackBanknotes = [1, 2, 5, 10, 20, 50, 100];
-
 function makeChange(price, pay) {
+  const stackBanknotes = [100, 50, 20, 10, 5, 2, 1];
+
   let change = pay - price;
-
-  if (stackBanknotes.includes(change)) return 1;
-
-  let max = Number.MAX_VALUE;
-  let memo = Array(change + 1).fill(max);
+  let index = [];
+  let result = [];
 
   stackBanknotes.forEach(item => {
-    if (change > item) memo[item] = 1;
+    let changeAmount = Math.floor(change / item);
+    change -= item * changeAmount;
+    index.push(changeAmount);
   });
 
-  for (let i = 2; i <= change; ++i) {
-    if (stackBanknotes.includes(i)) {
-      continue;
+  for (let i = 0; i < index.length; ++i) {
+    if (index[i] == 0) continue;
+    for (let j = index[i]; j > 0; --j) {
+      result.push(stackBanknotes[i]);
     }
-    let min1 = i > 1 ? memo[i - 1] : max;
-    let min2 = i > 2 ? memo[i - 2] : max;
-    let min5 = i > 5 ? memo[i - 5] : max;
-    let min10 = i > 10 ? memo[i - 10] : max;
-    let min20 = i > 20 ? memo[i - 20] : max;
-    let min50 = i > 50 ? memo[i - 50] : max;
-    let min100 = i > 100 ? memo[i - 100] : max;
-
-    memo[i] = Math.min(min1, min2, min5, min10, min20, min50, min100) + 1;
   }
 
-  return memo[change];
-} 
+  return result;
+}
